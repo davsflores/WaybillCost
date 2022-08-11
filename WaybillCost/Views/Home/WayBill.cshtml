@@ -1,0 +1,61 @@
+﻿@model IEnumerable<WaybillCost.WayBill>
+
+@{
+    ViewBag.Title = "WayBill";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>WayBill</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.priority)
+            </th>
+            <th>
+                @Html.ActionLink("type", "WayBill", new { sortOrder = ViewBag.TypeSortParm })
+            </th>
+            <th>
+                @Html.ActionLink("weight", "WayBill", new { sortOrder = ViewBag.WeightSortParm })
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.totalcost)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.priority)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.weight)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.totalcost)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.waybillid }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.waybillid }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.waybillid })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
