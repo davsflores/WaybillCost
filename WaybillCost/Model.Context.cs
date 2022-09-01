@@ -27,5 +27,7 @@ namespace WaybillCost
     
         public virtual DbSet<WayBill> WayBills { get; set; }
         public virtual DbSet<WeightCost> WeightCosts { get; set; }
+        public virtual DbSet<Destination> Destinations { get; set; }
+        public virtual DbSet<Origin> Origins { get; set; }
     }
 }

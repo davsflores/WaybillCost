@@ -4,7 +4,39 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="WayBillDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="WayBillDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Destination">
+          <Key>
+            <PropertyRef Name="waybillid" />
+          </Key>
+          <Property Name="waybillid" Type="int" Nullable="false" />
+          <Property Name="cpnumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="fname" Type="nvarchar" MaxLength="100" />
+          <Property Name="mname" Type="nvarchar" MaxLength="100" />
+          <Property Name="lname" Type="nvarchar" MaxLength="100" />
+          <Property Name="housenumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="street" Type="nvarchar" MaxLength="100" />
+          <Property Name="barangay" Type="nvarchar" MaxLength="100" />
+          <Property Name="city" Type="nvarchar" MaxLength="100" />
+          <Property Name="province" Type="nvarchar" MaxLength="100" />
+          <Property Name="country" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Origin">
+          <Key>
+            <PropertyRef Name="waybillid" />
+          </Key>
+          <Property Name="waybillid" Type="int" Nullable="false" />
+          <Property Name="cpnumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="fname" Type="nvarchar" MaxLength="100" />
+          <Property Name="mname" Type="nvarchar" MaxLength="100" />
+          <Property Name="lname" Type="nvarchar" MaxLength="100" />
+          <Property Name="housenumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="street" Type="nvarchar" MaxLength="100" />
+          <Property Name="barangay" Type="nvarchar" MaxLength="100" />
+          <Property Name="city" Type="nvarchar" MaxLength="100" />
+          <Property Name="province" Type="nvarchar" MaxLength="100" />
+          <Property Name="country" Type="nvarchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="WayBill">
           <Key>
             <PropertyRef Name="waybillid" />
@@ -15,6 +47,7 @@
           <Property Name="weight" Type="decimal" Precision="8" Scale="2" />
           <Property Name="cost" Type="decimal" Precision="8" Scale="2" />
           <Property Name="totalcost" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="datecreated" Type="datetime" />
         </EntityType>
         <EntityType Name="WeightCost">
           <Key>
@@ -28,11 +61,12 @@
           <Property Name="cost" Type="decimal" Precision="8" Scale="2" />
         </EntityType>
         <EntityContainer Name="WayBillDbModelStoreContainer">
+          <EntitySet Name="Destination" EntityType="Self.Destination" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Origin" EntityType="Self.Origin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WayBill" EntityType="Self.WayBill" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WeightCost" EntityType="Self.WeightCost" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WayBillDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -46,6 +80,7 @@
           <Property Name="weight" Type="Decimal" Precision="8" Scale="2" />
           <Property Name="cost" Type="Decimal" Precision="8" Scale="2" />
           <Property Name="totalcost" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="datecreated" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="WeightCost">
           <Key>
@@ -61,7 +96,41 @@
         <EntityContainer Name="WayBillDbContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="WayBills" EntityType="Self.WayBill" />
           <EntitySet Name="WeightCosts" EntityType="Self.WeightCost" />
+          <EntitySet Name="Destinations" EntityType="WayBillDbModel.Destination" />
+          <EntitySet Name="Origins" EntityType="WayBillDbModel.Origin" />
         </EntityContainer>
+        <EntityType Name="Destination">
+          <Key>
+            <PropertyRef Name="waybillid" />
+          </Key>
+          <Property Name="waybillid" Type="Int32" Nullable="false" />
+          <Property Name="cpnumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="fname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="mname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="lname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="housenumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="street" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="barangay" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="province" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Origin">
+          <Key>
+            <PropertyRef Name="waybillid" />
+          </Key>
+          <Property Name="waybillid" Type="Int32" Nullable="false" />
+          <Property Name="cpnumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="fname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="mname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="lname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="housenumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="street" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="barangay" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="province" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -71,6 +140,7 @@
           <EntitySetMapping Name="WayBills">
             <EntityTypeMapping TypeName="WayBillDbModel.WayBill">
               <MappingFragment StoreEntitySet="WayBill">
+                <ScalarProperty Name="datecreated" ColumnName="datecreated" />
                 <ScalarProperty Name="waybillid" ColumnName="waybillid" />
                 <ScalarProperty Name="priority" ColumnName="priority" />
                 <ScalarProperty Name="type" ColumnName="type" />
@@ -89,6 +159,40 @@
                 <ScalarProperty Name="minweight" ColumnName="minweight" />
                 <ScalarProperty Name="maxweight" ColumnName="maxweight" />
                 <ScalarProperty Name="cost" ColumnName="cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Destinations">
+            <EntityTypeMapping TypeName="WayBillDbModel.Destination">
+              <MappingFragment StoreEntitySet="Destination">
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="province" ColumnName="province" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="barangay" ColumnName="barangay" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="housenumber" ColumnName="housenumber" />
+                <ScalarProperty Name="lname" ColumnName="lname" />
+                <ScalarProperty Name="mname" ColumnName="mname" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
+                <ScalarProperty Name="cpnumber" ColumnName="cpnumber" />
+                <ScalarProperty Name="waybillid" ColumnName="waybillid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Origins">
+            <EntityTypeMapping TypeName="WayBillDbModel.Origin">
+              <MappingFragment StoreEntitySet="Origin">
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="province" ColumnName="province" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="barangay" ColumnName="barangay" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="housenumber" ColumnName="housenumber" />
+                <ScalarProperty Name="lname" ColumnName="lname" />
+                <ScalarProperty Name="mname" ColumnName="mname" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
+                <ScalarProperty Name="cpnumber" ColumnName="cpnumber" />
+                <ScalarProperty Name="waybillid" ColumnName="waybillid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

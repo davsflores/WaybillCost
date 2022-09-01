@@ -12,14 +12,18 @@ namespace WaybillCost
     using System;
     using System.Collections.Generic;
     
-    public partial class WayBill
+    public partial class Destination
     {
         public int waybillid { get; set; }
-        public string priority { get; set; }
-        public string type { get; set; }
-        public Nullable<decimal> weight { get; set; }
-        public Nullable<decimal> cost { get; set; }
-        public Nullable<decimal> totalcost { get; set; }
-        public Nullable<System.DateTime> datecreated { get; set; }
+        public string cpnumber { get; set; }
+        public string fname { get; set; }
+        public string mname { get; set; }
+        public string lname { get; set; }
+        public string housenumber { get; set; }
+        public string street { get; set; }
+        public string barangay { get; set; }
+        public string city { get; set; }
+        public string province { get; set; }
+        public string country { get; set; }
     }
 }

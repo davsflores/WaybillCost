@@ -7,6 +7,8 @@
       <Diagram DiagramId="b31aa66e2e2a461fa57583cfdc2f66af" Name="Diagram1">
         <EntityTypeShape EntityType="WayBillDbModel.WayBill" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WayBillDbModel.WeightCost" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WayBillDbModel.Destination" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="WayBillDbModel.Origin" Width="1.5" PointX="2.75" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
