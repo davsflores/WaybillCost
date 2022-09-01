@@ -1,0 +1,55 @@
+﻿@model IEnumerable<WaybillCost.Models.WaybillOriginDestinationModel>
+@{
+	ViewBag.Title = "ViewMultipleTable";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List of Origin, Destination and Waybill Cost</h2>
+
+<table class="table">
+	<tr>
+		<th>WaybillId</th>
+		<th>FName</th>
+		<th>LName</th>
+		<th>Origin Address</th>
+		<th>FName</th>
+		<th>LName</th>
+		<th>Destination Address</th>
+		<th>@Html.ActionLink("Date Created", "ViewMultipleTable", new { sortOrder = ViewBag.DateSortParm })</th>
+		<th> @Html.ActionLink("Weight", "ViewMultipleTable", new { sortOrder = ViewBag.WeightSortParm })</th>
+		<th>TotalCost</th>
+
+	</tr>
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>@Html.DisplayFor(modelItem => item.waybillDetails.waybillid) </td>
+			<td>@Html.DisplayFor(modelItem => item.originDetails.fname)</td>
+			<td>@Html.DisplayFor(modelItem => item.originDetails.lname)</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.originDetails.housenumber),
+				@Html.DisplayFor(modelItem => item.originDetails.street),
+				@Html.DisplayFor(modelItem => item.originDetails.barangay),
+				@Html.DisplayFor(modelItem => item.originDetails.city),
+				@Html.DisplayFor(modelItem => item.originDetails.province),
+				@Html.DisplayFor(modelItem => item.originDetails.country)
+			</td>
+			<td>@Html.DisplayFor(modelItem => item.destinationDetails.fname)</td>
+			<td>@Html.DisplayFor(modelItem => item.destinationDetails.lname)</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.destinationDetails.housenumber),
+				@Html.DisplayFor(modelItem => item.destinationDetails.street),
+				@Html.DisplayFor(modelItem => item.destinationDetails.barangay),
+				@Html.DisplayFor(modelItem => item.destinationDetails.city),
+				@Html.DisplayFor(modelItem => item.destinationDetails.province),
+				@Html.DisplayFor(modelItem => item.destinationDetails.country)
+			</td>
+			<td>@Html.DisplayFor(modelItem => item.waybillDetails.datecreated)</td>
+			<td>@Html.DisplayFor(modelItem => item.waybillDetails.weight)</td>
+			<td>@Html.DisplayFor(modelItem => item.waybillDetails.totalcost)</td>
+
+		</tr>
+	}
+</table>
+
+

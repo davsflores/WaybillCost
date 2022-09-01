@@ -151,6 +151,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\WaybillOriginDestinationModel.cs" />
     <Compile Include="Origin.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -219,10 +220,11 @@
     <Content Include="Views\Home\WayBill.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Home\Edit.cshtml" />
+    <Content Include="Views\Home\ViewMultipleTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
